@@ -1,3 +1,51 @@
+## Description
+Please write a static webpage that loads data from https://swapi.dev/api/planets/, formats and displays that data in a table.
+ 
+ 
+ 
+Name the entrypoint for your application index.html.
+NOTE: If the applicant is using create react app then this line should indicate that they don't need an index.html file as an entry point. 
+
+
+You may use additional files to organize your code. You may also use frameworks and build tools as long as clear, simple instructions are provided for how to run them. Please ensure your solution can be easily viewed in the browser. Be ready to answer questions about why you chose a given approach.
+
+Don't worry about making the table look fancy; you can style it however you would like to alongside the requirements below. We will look at the markup you generate and any code you write to load or display the data.
+
+For each planet in the dataset, please display:
+
+The planet's name
+The name should be a link that, when clicked, opens the planet's API URL in a new window
+The planet's climate
+How many residents the planet has
+The terrains found on the planet
+The population
+The surface area covered by water
+Assume that all planets are perfect spheres.
+The radius of a sphere is half its diameter.
+The value of surface_water from the API is a percentage, so a value of 50 means the planet is 50% covered in water.
+Round these values to the nearest integer value.
+Additionally, please satisfy these requirements:
+
+Show a loading message while loading the data, and hide this message once the data is displayed.
+Display an error message if the data load fails for some reason. We may test your code against an invalid URL to demonstrate this.
+Sort the planets alphabetically
+Any column that is unknown should be displayed as ?.
+Format all numbers larger than 999 with spaces to group digits into groups of three. For example, ten thousand should be displayed as 10 000.
+Cells in the table should be separated by 1 pixel gray lines.
+Stretch goals (optional)
+If you complete the above and still have additional time, you can choose to complete one or more of the following.
+
+This is absolutely not required for submitting the work sample and should not be worked on beyond the four hour time limit.
+
+The API only returns the first page of data by default. Add a "load more" button that loads additional pages of data when clicked. Only show this button if there is more data to be loaded.
+Sort the table by a column's values when that column's header is clicked.
+Table has both an empty state and loading state (displayed when no data exists, and when data is loading respectively).
+Spruce up your page with some extra styling & design elements!
+Make sure your page is usable on mobile devices.
+Include some tests.
+
+
+------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
