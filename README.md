@@ -1,10 +1,15 @@
 ## Description
-Please write a static webpage that loads data from https://swapi.dev/api/planets/, formats and displays that data in a table.
+
+This is sample code for Truss's new coding test written in React. The goal of this project is to test the new Truss coding test and also challenge myself to write code in React and test out different front end tools such as Truss's USWDS library.
+
+### Instructions
+Write a static webpage that loads data from https://swapi.dev/api/planets/, formats and displays that data in a table.
  
  
  
 Name the entrypoint for your application index.html.
-NOTE: If the applicant is using create react app then this line should indicate that they don't need an index.html file as an entry point. 
+
+_NOTE: If the applicant is using create react app then this line should indicate that they don't need an index.html file as an entry point._ 
 
 
 You may use additional files to organize your code. You may also use frameworks and build tools as long as clear, simple instructions are provided for how to run them. Please ensure your solution can be easily viewed in the browser. Be ready to answer questions about why you chose a given approach.
@@ -35,6 +40,7 @@ Cells in the table should be separated by 1 pixel gray lines.
 Stretch goals (optional)
 If you complete the above and still have additional time, you can choose to complete one or more of the following.
 
+__Stretch Goals:__
 This is absolutely not required for submitting the work sample and should not be worked on beyond the four hour time limit.
 
 The API only returns the first page of data by default. Add a "load more" button that loads additional pages of data when clicked. Only show this button if there is more data to be loaded.
