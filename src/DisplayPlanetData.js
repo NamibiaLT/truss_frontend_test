@@ -51,34 +51,38 @@ class DisplayPlanetData extends React.Component {
         } else {
             return (
                 <Table bordered>
-                    <tr> <th>Planets</th>
-                        <th> Climate </th>
-                        <th> Residents </th>
-                        <th> Terrains </th>
-                        <th> Population </th>
-                        <th> Water Surface Area </th>
-                    </tr>
-                    {planets.sort((a, b) => {
-                        const planetA = a.name.toUpperCase();
-                        const planetB = b.name.toUpperCase();
-
-                        let comparison = 0;
-                        if (planetA > planetB) {
-                            comparison = 1;
-                        } else if (planetA < planetB) {
-                            comparison = -1;
-                        }
-                        return comparison;
-                    }).map(planet => (
-                        <tr key={planet.name}>
-                            <td><a href={planet.url} target="_blank">{planet.name}</a></td>
-                            <td>{planet.climate}</td>
-                            <td>{planet.residents.length}</td>
-                            <td>{planet.terrain}</td>
-                            <td>{planet.population}</td>
-                            <td>{this.checkUnknown(planet.surface_water)}</td>
+                    <thead>
+                        <tr><th>Planets</th>
+                            <th>Climate</th>
+                            <th>Residents</th>
+                            <th>Terrains</th>
+                            <th>Population</th>
+                            <th>Water Surface Area</th>
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody >
+                        {planets.sort((a, b) => {
+                            const planetA = a.name.toUpperCase();
+                            const planetB = b.name.toUpperCase();
+
+                            let comparison = 0;
+                            if (planetA > planetB) {
+                                comparison = 1;
+                            } else if (planetA < planetB) {
+                                comparison = -1;
+                            }
+                            return comparison;
+                        }).map(planet => (
+                            <tr key={planet.name}>
+                                <td><a href={planet.url} target="_blank">{planet.name}</a></td>
+                                <td>{planet.climate}</td>
+                                <td>{planet.residents.length}</td>
+                                <td>{planet.terrain}</td>
+                                <td>{planet.population}</td>
+                                <td data-testid="surface_water">{this.checkUnknown(planet.surface_water)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </Table>
             );
         }
