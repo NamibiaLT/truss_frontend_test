@@ -86,7 +86,6 @@ describe('DisplayPlanet', () => {
 
     it('renders loading indicator', () => {
         const wrapper = shallow(<DisplayPlanetData />);
-        console.log(wrapper.debug());
         expect(wrapper.find({
             isLoaded: false
         }));
@@ -97,7 +96,7 @@ describe('DisplayPlanet', () => {
     it('renders a table when loaded', () => {
         const wrapper = mount(<DisplayPlanetData />);
         wrapper.setState({ isLoaded: true, planets: testPlanets })
-        console.log(wrapper.debug());
+        // console.log(wrapper.debug());
         expect(wrapper.exists('table')).toBe(true)
     });
 
