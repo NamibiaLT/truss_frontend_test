@@ -107,14 +107,28 @@ describe('DisplayPlanet', () => {
     })
 
     it('renders the expected water percentage', () => {
-        const wrapper = shallow(<DisplayPlanetData />);
+        const wrapper = mount(<DisplayPlanetData />);
         // console.log(wrapper.debug());
         wrapper.setState({ isLoaded: true, planets: testPlanets })
-        console.log(wrapper.debug());
-        expect(wrapper.find({
-            'key': 'Alderaan'
-        })).toBe('Alderaan');
+        // console.log(wrapper.debug());
+        const tableRow = wrapper.findWhere((n) =>
+            n.type() === 'tr' && n.text().includes('Alderaan'))
+        console.log(tableRow.debug())
+        expect(tableRow.contains('40%')).toBe(true);
     })
+
+    xit('api is called as expected', () => {
+        // LOOK AT JEST DOCS
+        // const fetchMock = jest.mock({planets})
+        // mount
+        // expect (fetchMock).toHaveBeenCalled();
+        // expect wrapper is in the loaded state
+        // expect table to be rendered
+    })
+
+    it.todo('api returns error when expected')
+    it.todo('planet names are capitalized when expected')
+    it.todo('planets are sorted by alphabetically')
 
 })
 
