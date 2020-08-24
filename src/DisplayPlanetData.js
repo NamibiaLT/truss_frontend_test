@@ -1,5 +1,4 @@
 import React from 'react';
-import 'axios';
 import { Table } from '@trussworks/react-uswds'
 
 class DisplayPlanetData extends React.Component {
@@ -13,6 +12,7 @@ class DisplayPlanetData extends React.Component {
     }
 
     componentDidMount() {
+
         fetch("https://swapi.dev/api/planets/")
             .then(res => res.json())
             .then(
@@ -31,7 +31,7 @@ class DisplayPlanetData extends React.Component {
                         error
                     });
                 }
-            )
+            ).catch(error => { console.log('HELLO', error) })
     }
 
     checkUnknown(surface_water) {
