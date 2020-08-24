@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import DisplayPlanetData from './DisplayPlanetData';
+
 const testPlanets = [
     {
         "name": "Tatooine",
@@ -78,7 +79,6 @@ const testPlanets = [
         "url": "http://swapi.dev/api/planets/3/"
     }]
 
-
 describe('DisplayPlanet', () => {
     it('renders without crashing', () => {
         shallow(<DisplayPlanetData />);
@@ -108,29 +108,39 @@ describe('DisplayPlanet', () => {
 
     it('renders the expected water percentage', () => {
         const wrapper = mount(<DisplayPlanetData />);
-        // console.log(wrapper.debug());
         wrapper.setState({ isLoaded: true, planets: testPlanets })
-        // console.log(wrapper.debug());
         const tableRow = wrapper.findWhere((n) =>
             n.type() === 'tr' && n.text().includes('Alderaan'))
-        console.log(tableRow.debug())
         expect(tableRow.contains('40%')).toBe(true);
     })
 
-    xit('api is called as expected', () => {
-        // LOOK AT JEST DOCS
-        // const fetchMock = jest.mock({planets})
-        // mount
-        // expect (fetchMock).toHaveBeenCalled();
-        // expect wrapper is in the loaded state
-        // expect table to be rendered
+
+    it('api is called as expected', () => {
+        const mockSuccessResponse = { results: testPlanets };
+        const mockJsonPromise = Promise.resolve(mockSuccessResponse);
+        const mockFetchPromise = Promise.resolve({ // 3
+            json: () => mockJsonPromise,
+        });
+        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+
+        shallow(<DisplayPlanetData />);
+        expect(global.fetch).toHaveBeenCalled();
+        expect(global.fetch).toHaveBeenCalledWith("https://swapi.dev/api/planets/");
     })
 
-    it.todo('api returns error when expected')
+    fit('loading state persists when api is rejected', () => {
+        // const mockSuccessResponse = { error: 'something went wrong..' };
+        // const mockJsonPromise = Promise.reject(mockSuccessResponse);
+        const mockFetchPromise = Promise.reject('something went wrong..');
+        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+    })
+
     it.todo('planet names are capitalized when expected')
     it.todo('planets are sorted by alphabetically')
 
+    afterEach(jest.resetAllMocks);
 })
+
 
 
 
