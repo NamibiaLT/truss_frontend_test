@@ -80,6 +80,12 @@ const testPlanets = [
     }]
 
 describe('DisplayPlanet', () => {
+
+    // To clear all mocks after every test:
+    afterEach(() => {
+        jest.clearAllMocks()
+    })
+
     it('renders without crashing', () => {
         shallow(<DisplayPlanetData />);
     });
