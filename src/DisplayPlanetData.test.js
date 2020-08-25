@@ -134,10 +134,9 @@ describe('DisplayPlanet', () => {
     })
 
     fit('loading state persists when api is rejected', () => {
-        // const mockSuccessResponse = { error: 'something went wrong..' };
-        // const mockJsonPromise = Promise.reject(mockSuccessResponse);
-        const mockFetchPromise = Promise.reject('something went wrong..');
-        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+        jest.spyOn(global, 'fetch').mockImplementation(() => Promise.reject('something went wrong..'));
+        shallow(<DisplayPlanetData />);
+        expect(global.fetch).toHaveBeenCalled();
     })
 
     it.todo('planet names are capitalized when expected')
