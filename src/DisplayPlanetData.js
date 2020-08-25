@@ -14,7 +14,7 @@ class DisplayPlanetData extends React.Component {
     componentDidMount() {
 
         fetch("https://swapi.dev/api/planets/")
-            .then(res => res.json())
+            .then(res => { console.log('lol)'); return res.json() })
             .then(
                 (result) => {
                     this.setState({
@@ -31,7 +31,7 @@ class DisplayPlanetData extends React.Component {
                         error
                     });
                 }
-            ).catch(error => { console.log('HELLO', error) })
+            )
     }
 
     checkUnknown(surface_water) {
