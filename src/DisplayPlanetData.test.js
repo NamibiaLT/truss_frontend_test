@@ -2,6 +2,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import DisplayPlanetData from './DisplayPlanetData';
+import mockAxios from 'axios';
+
+// jest.mock('axios')
 
 const testPlanets = [
     {
@@ -121,19 +124,15 @@ describe('DisplayPlanet', () => {
 
 
     it('api is called as expected', () => {
-        const mockSuccessResponse = { results: testPlanets };
-        const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-        const mockFetchPromise = Promise.resolve({ // 3
-            json: () => mockJsonPromise,
-        });
-        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+        const data = { results: testPlanets };
+        mockAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
         shallow(<DisplayPlanetData />);
-        expect(global.fetch).toHaveBeenCalled();
-        expect(global.fetch).toHaveBeenCalledWith("https://swapi.dev/api/planets/");
+        expect(mockAxios.request).toHaveBeenCalled();
+        expect(mockAxios.request).toHaveBeenCalledWith("https://swapi.dev/api/planets/");
     })
 
-    fit('loading state persists when api is rejected', () => {
+    xit('loading state persists when api is rejected', () => {
         jest.spyOn(global, 'fetch').mockImplementation(() => Promise.reject('something went wrong..'));
         shallow(<DisplayPlanetData />);
         expect(global.fetch).toHaveBeenCalled();
