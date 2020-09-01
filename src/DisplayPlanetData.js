@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from '@trussworks/react-uswds'
+import axios from 'axios';
 
 class DisplayPlanetData extends React.Component {
     constructor(props) {
