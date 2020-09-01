@@ -81,5 +81,4 @@ class DisplayPlanetData extends React.Component {
         }
     }
 }
-
 export default DisplayPlanetData;
