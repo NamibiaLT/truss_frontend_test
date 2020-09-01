@@ -13,25 +13,17 @@ class DisplayPlanetData extends React.Component {
     }
 
     componentDidMount() {
-
-        fetch("https://swapi.dev/api/planets/")
-            .then(res => { console.log('lol)'); return res.json() })
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        planets: result.results
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
+        axios.get("https://swapi.dev/api/planets/")
+            .then(res => this.setState({
+                isLoaded: true,
+                planets: res.data.results
+            })
+            )
+            .catch(error =>
+                this.setState({
+                    isLoaded: true,
+                    error
+                })
             )
     }
 
