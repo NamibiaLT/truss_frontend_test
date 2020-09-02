@@ -123,7 +123,7 @@ describe('DisplayPlanet', () => {
     })
 
 
-    it('api is called as expected', () => {
+    it('calls api as expected', () => {
         const data = { results: testPlanets };
         mockAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
